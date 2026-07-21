@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
+      integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      padding: 15px 40px; /* Balanced left & right padding */
+      background: rgb(67, 83, 112); /* Darker background for elegance */
+      color: white;
+    }
+
+    .social-icons a {
+      font-size: 20px;
+      margin-right: 15px;
+      color: white;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .social-icons a:hover {
+      color: #00bfff; /* Highlight on hover */
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .slogan {
+      font-size: 16px;
+      font-style: italic;
+      color: #ddd;
+    }
+
+    .contact {
+      text-align: right;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* Navbar */
+    .navbar {
+      padding: 10px 40px;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .navbar-nav {
+      margin: 0 auto;
+    }
+
+    .navbar-nav .nav-item {
+      padding: 0 15px;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+      color: white !important;
+      font-weight: bold;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .navbar-light .navbar-nav .nav-link:hover {
+      color: #00bfff;
+    }
+
+    .navbar-light .navbar-toggler {
+      border-color: white;
+    }
+
+    /* Dropdown Menu */
+    .navbar .dropdown-menu {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      border: none;
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+    .navbar .nav-item.dropdown:hover .dropdown-menu {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .navbar .dropdown-menu .dropdown-item {
+      color: #333 !important;
+      font-weight: 500;
+      padding: 12px 20px;
+      transition: background 0.3s ease-in-out, padding 0.2s ease-in-out;
+    }
+
+    .navbar .dropdown-menu .dropdown-item:hover {
+      background: rgb(235, 124, 83);
+      color: white !important;
+      padding-left: 25px;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: url("img/patient.jpg") no-repeat center center/cover;
+      height: 500px; /* Fixed height */
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 8%;
+      position: relative;
+      color: white;
+    }
+
+    /* Dark Overlay */
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Hero Content */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-style: italic;
+    }
+
+    .intro {
+      text-align: center;
+      padding: 20px;
+      background: #f8f9fa;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .resource-card {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;  
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.cont {
+    display: flex;
+    align-items: center;  
+    justify-content: flex-start;
+}
+
+.text-and-button {
+    margin-left: 35px; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+}
+
+.resource-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px; 
+    text-align: left;  
+}
+
+.resource-btn {
+    border-radius: 30px;
+    padding: 10px 20px;
+}
+
+/* case Study */
+.case-studies {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.case2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: justify;
+    flex-wrap: wrap; /* Ensures elements wrap on small screens */
+}
+
+.case {
+    flex: 1; /* Allows the text content to take available space */
+    min-width: 300px;
+}
+
+.case h2 {
+    color: #0077b6;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.case p {
+    font-size: 1em;
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+/* Responsive Image */
+.case2 img {
+    max-width: 100%;
+    height: auto;
+    margin-left: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .case2 {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .case h2 {
+        font-size: 1.5rem;
+    }
+
+    .case p {
+        font-size: 0.95em;
+    }
+
+    .case2 img {
+        margin-left: 0;
+        margin-top: 15px;
+        max-width: 90%; /* Ensures image doesn't take full width */
+    }
+}
+
+/* Case Study End */
+
+    .faq {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .faq-item {
+      margin-bottom: 10px;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 10px;
+      background: rgb(185, 77, 38);
+      color: white;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 10px;
+      background: white;
+      border: 1px solid #ddd;
+    }
+    .faq-answer.show {
+      display: block;
+    }
+    footer {
+      background: #343a40;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+    }
+
+    .custom-contact-section {
+            position: relative;
+            background: url('img/patient2.jpg') no-repeat center center/cover;
+            margin: 50px;
+            min-height: 600px;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-align: left;
+        }
+        .custom-overlay {
+            background: rgba(0, 0, 0, 0.452);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .custom-content {
+            position: relative;
+            z-index: 2;
+            max-width: 400px;
+            padding: 20px;
+        }
+        .custom-btn {
+            background-color: white;
+            color: black;
+            border-radius: 20px;
+            padding: 10px 20px;
+            border: none;
+            font-weight: bold;
+        }
+        .custom-btn:hover {
+            background-color: #ddd;
+        }
+  </style>
+
+  <body>
+    <!-- Top Bar -->
+    <div class="container-fluid text-white py-3 top-bar">
+      <div class="row align-items-center">
+        <div class="col-4 text-start social-icons">
+          <a href="#" class="text-white me-3"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-google"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="col-4 text-center logo">
+          <i class="fas fa-tooth"></i>
+          <span>32 Smile</span>
+          <div class="slogan">Bringing Perfect Smiles to Life</div>
+        </div>
+        <div class="col-4 text-end contact">
+          <span>(123) 456-7890</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light">
+      <div class="container">
+          <!-- Navbar Toggler (for mobile) -->
+          <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <!-- Navbar Links -->
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+              <ul class="navbar-nav text-center">
+                  <li class="nav-item"><a class="nav-link" href="Index.html">Home</a></li>
+    
+                  <!-- Dropdown Menu -->
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Professional Education
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="courses.html">Courses</a></li>
+                          <li><a class="dropdown-item" href="faculty.html">Faculty</a></li>
+                          <li><a class="dropdown-item" href="casestudy.html">Case Studies</a></li>
+                          <li><a class="dropdown-item" href="helpdoc.html">Help Documents</a></li>
+                          <li><a class="dropdown-item" href="student.html">Student Resources</a></li>
+                      </ul>
+                  </li>
+    
+                  <li class="nav-item"><a class="nav-link" href="patient.html">Patient Education</a></li>
+                  <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+                  <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+                  <li class="nav-item"><a class="nav-link" href="Site.html">Site Map</a></li>
+                  <li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact</a></li>
+              </ul>
+          </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 style="font-size: 60px"><b>Patient Education</b></h1>
+      </div>
+    </section>
+
+    <section class="intro">
+      <h2>Welcome to Patient Education</h2>
+      <p>Learn about common dental issues and how to maintain oral health.</p>
+    </section>
+
+    <!-- Information -->
+<div class="case-studies">
+  <div class="case2">
+      <div class="case">
+          <h2>Resources to educate <br> your patient chairside</h2>
+          <p>Our chairside materials are designed to help you educate patients on a range of oral health topics based on each patient’s unique needs, then recommend Philips Oral Healthcare solutions as part of their treatment plan.</p>
+      </div>
+      <img src="img/patient1.jpg" alt="Patient Education">
+  </div>
+</div>
+<!-- Information End -->
+
+
+<section class="custom-contact-section d-flex align-items-center">
+  <div class="custom-overlay"></div>
+  <div class="container">
+      <div class="custom-content">
+          <p>Stay connected</p>
+          <h2>Want to get in touch?</h2>
+          <p>Complete the form and we'll get back to you.</p>
+          <button class="custom-btn">Connect with sales</button>
+      </div>
+  </div>
+</section>
+
+
+    <!-- Patient Education -->
+<div class="container py-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="resource-card">
+              <div class="cont">
+                <img style="width: 60px; height: auto;" src="img/icon1.jpg" alt="">
+                <div class="text-and-button">
+                  <h5 class="resource-title">Caries/Cavities</h5>
+                  <a href="pdfs/Caries_Toolkit.zip"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="resource-card">
+                <div class="cont">
+                    <img style="width: 60px; height: auto;" src="img/icon2.jpg" alt="">
+                    <div class="text-and-button">
+                        <h5 class="resource-title">Gingival Health</h5>
+                        <a href="pdfs/Gingivitis_Toolkit.zip"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="resource-card">
+                <div class="cont">
+                    <img style="width: 60px; height: auto;" src="img/icon3.jpg" alt="">
+                    <div class="text-and-button">
+                        <h5 class="resource-title">Oral Conditions</h5>
+                        <a href="pdfs/Philips_Kids_Toolkit.zip"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="resource-card">
+                <div class="cont">
+                    <img style="width: 60px; height: auto;" src="img/icon4.jpg" alt="">
+                    <div class="text-and-button">
+                        <h5 class="resource-title">Orthodontics</h5>
+                        <a href="pdfs/Ortho_Toolkit.zip"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="resource-card">
+                <div class="cont">
+                    <img style="width: 60px; height: auto;" src="img/icon5.jpg" alt="">
+                    <div class="text-and-button">
+                        <h5 class="resource-title">Periodontitis</h5>
+                        <a href="pdfs/Perio_Toolkit.zip"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="resource-card">
+                <div class="cont">
+                    <img style="width: 60px; height: auto;" src="img/icon6.jpg" alt="">
+                    <div class="text-and-button">
+                        <h5 class="resource-title">All Conditions</h5>
+                        <a href="pdfs/Patient_Education_Toolkits.zip"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="resource-card">
+                <div class="cont">
+                    <img style="width: 60px; height: auto;" src="img/icon7.jpg" alt="">
+                    <div class="text-and-button">
+                        <h5 class="resource-title">Teeth Whitening</h5>
+                        <a href="pdfs/Whitening_Toolkit.zip"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="resource-card">
+                <div class="cont">
+                    <img style="width: 60px; height: auto;" src="img/icon8.jpg" alt="">
+                    <div class="text-and-button">
+                        <h5 class="resource-title">Behavior Change</h5>
+                        <a href="pdfs/behavior-change-resources.zip"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="resource-card">
+                <div class="cont">
+                    <img style="width: 60px; height: auto;" src="img/icon9.jpg" alt="">
+                    <div class="text-and-button">
+                        <h5 class="resource-title">Implant Care</h5>
+                        <a href="pdfs/2161-1122-6-359.pdf"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- Patient Education End -->
+  
+  
+
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How often should I visit the dentist?
+        </button>
+        <div class="faq-answer">
+          It is recommended to visit a dentist every 6 months.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What is the best way to brush my teeth?
+        </button>
+        <div class="faq-answer">
+          Brush your teeth twice a day using a soft-bristled toothbrush.
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer
+      class="text-white"
+      style="
+        background-color: rgb(67, 83, 112);
+        padding: 40px 0;
+        margin-top: 0px;
+      "
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 text-center text-md-start">
+            <h4 class="fw-bold">About 32 Smile</h4>
+            <p>
+              We are a dedicated dental clinic in Karachi, providing
+              high-quality services to ensure healthy and beautiful smiles for
+              our patients.
+            </p>
+          </div>
+          <div class="col-md-4 text-center">
+            <h4 class="fw-bold">Quick Links</h4>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-white text-decoration-none">Home</a>
+              </li>
+              <li>
+                <a href="patient.html" class="text-white text-decoration-none"
+                  >Patient Education</a
+                >
+              </li>
+              <li>
+                <a href="research.html" class="text-white text-decoration-none"
+                  >Research</a
+                >
+              </li>
+              <li>
+                <a href="ContactUs.html" class="text-white text-decoration-none"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 text-center text-md-end">
+            <h4 class="fw-bold">Contact Us</h4>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> 75950 Federal B . #1609,
+              Sindh, Karachi 75950
+            </p>
+            <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+            <p><i class="fas fa-envelope"></i> 32smiles@dentist.com</p>
+            <div class="social-icons">
+              <a href="#" class="text-white me-2"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="text-white me-2"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="text-white me-2"
+                ><i class="fab fa-google"></i
+              ></a>
+              <a href="#" class="text-white"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <hr class="bg-white" />
+        <div class="text-center">
+          <p class="mb-0">&copy; 2025 32 Smile. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const questions = document.querySelectorAll(".faq-question");
+
+        questions.forEach((question) => {
+          question.addEventListener("click", function () {
+            this.nextElementSibling.classList.toggle("show");
+          });
+        });
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

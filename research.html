@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</head>
+
+<style>
+    /* Global Styles */
+    * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* Top Bar */
+        .top-bar {
+          padding: 15px 40px; 
+          background: rgb(63, 87, 112); 
+          color: white;
+        }
+        
+        .social-icons a {
+          font-size: 20px;
+          margin-right: 15px;
+          color: white;
+          transition: color 0.3s ease-in-out;
+        }
+        
+        .social-icons a:hover {
+          color: #00bfff; /* Highlight on hover */
+        }
+        
+        .logo {
+          font-size: 28px;
+          font-weight: bold;
+          text-align: center;
+        }
+        
+        .slogan {
+          font-size: 16px;
+          font-style: italic;
+          color: #ddd;
+        }
+        
+        .contact {
+          text-align: right;
+          font-size: 20px;
+          font-weight: bold;
+        }
+        
+        /* Navbar */
+        .navbar {
+          padding: 10px 40px;
+          position: sticky;
+          top: 0;
+          width: 100%;
+          z-index: 1000;
+        }
+        
+        .navbar-nav {
+          margin: 0 auto;
+        }
+        
+        .navbar-nav .nav-item {
+          padding: 0 15px;
+        }
+        
+        .navbar-light .navbar-nav .nav-link {
+          color: white !important;
+          font-weight: bold;
+          transition: color 0.3s ease-in-out;
+        }
+        
+        .navbar-light .navbar-nav .nav-link:hover {
+          color: #00bfff;
+        }
+        
+        .navbar-light .navbar-toggler {
+          border-color: white;
+        }
+        
+        /* Dropdown Menu */
+        .navbar .dropdown-menu {
+          background: white;
+          border-radius: 8px;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+          border: none;
+          display: none;
+          opacity: 0;
+          transform: translateY(10px);
+          transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        
+        .navbar .nav-item.dropdown:hover .dropdown-menu {
+          display: block;
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        .navbar .dropdown-menu .dropdown-item {
+          color: #333 !important;
+          font-weight: 500;
+          padding: 12px 20px;
+          transition: background 0.3s ease-in-out, padding 0.2s ease-in-out;
+        }
+        
+        .navbar .dropdown-menu .dropdown-item:hover {
+          background: rgb(235, 124, 83);
+          color: white !important;
+          padding-left: 25px;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+          background: url('img/research.jpg') no-repeat center center/cover;
+          height: 500px; /* Fixed height */
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          padding-left: 8%;
+          position: relative;
+          color: white;
+        }
+        
+        /* Dark Overlay */
+        .hero-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Hero Content */
+        .hero-content {
+          position: relative;
+          z-index: 2;
+          max-width: 600px;
+        }
+        
+        .hero-content h1 {
+          font-size: 3rem;
+          font-style: italic;
+        }
+
+          .research-section {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .research-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tab-btn {
+            padding: 10px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .tab-btn.active {
+            background: #0056b3;
+        }
+        
+        .research-content {
+            display: none;
+        }
+        
+        .research-content.active {
+            display: block;
+        }
+        
+        .case-study, .media-item {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .custom-container {
+            max-width: auto;
+            margin: auto;
+            padding: 40px 20px;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #222;
+        }
+        .content p {
+            color: #444;
+            line-height: 1.6;
+        }
+        .content strong {
+            font-weight: bold;
+        }
+        .btn-custom {
+            border: 1px solid black;
+            background-color: rgb(223, 111, 71);
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        .btn-custom:hover {
+            background-color: rgb(65, 99, 161);
+            color: white;
+        }
+
+      /* Research Areas */
+      .research-container {
+            max-width: auto;
+            margin: auto;
+            padding: 40px 20px;
+            text-align: left;
+        }
+        .research-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .research-heading {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #222;
+            white-space: nowrap;
+        }
+        .research-description {
+            color: #666;
+            font-size: 1rem;
+            flex: 1;  /* Makes paragraph take remaining space */
+            margin: 0;
+        }
+        .research-card {
+            border: none;
+            background: white;
+            border: 2px solid rgb(228, 228, 228);
+        }
+        .research-card:hover {
+            cursor: pointer;
+            background-color: #fff2dd;
+        }
+        .research-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .research-card-body {
+            padding: 20px;
+        }
+        .research-card-title {
+            font-weight: bold;
+            color: #222;
+        }
+        .research-card-footer {
+            background: none;
+            border: none;
+            text-align: right;
+        }
+        .research-button {
+            background-color: #d6b98c;
+            color: #222;
+            border: none;
+            padding: 8px 10px;
+            font-size: 1.2rem;
+            border-radius: 3px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .research-button:hover {
+            background-color: #b89a6c;
+            color: white;
+        }
+        /* Research Area End */
+
+        .stats-section {
+            text-align: center;
+            padding: 40px 0;
+        }
+        .stats-item {
+            border-bottom: 2px solid #800000;
+            padding-bottom: 10px;
+        }
+        .stats-item h1 {
+            color: #800000;
+            font-weight: bold;
+        }
+        .stats-item p {
+            color: #555;
+            margin-top: -5px;
+        }
+
+        /* Video Section */
+
+        .info-section {
+            text-align: center;
+            padding: 40px 0;
+        }
+        .info-item h3 {
+            color: #007baf;
+            font-weight: bold;
+        }
+        .info-item p {
+            color: #555;
+        }
+
+        .video-container {
+          width: 80%;
+          max-width: 800px; 
+          margin: 0 auto; 
+          padding: 20px;
+        }
+        
+        .video-container video {
+          width: 100%;
+          height: auto;
+        }  
+
+        .research-day-container {
+            text-align: center;
+            padding: 50px 0;
+        }
+        .research-day-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #222;
+        }
+        .research-day-date {
+            font-size: 1.6rem;
+            color: rgb(226, 109, 66);
+        }
+        .research-day-description {
+            font-size: 1rem;
+            color: #555;
+            margin: 20px 0;
+        }
+        .research-day-button {
+            background-color: rgb(59, 97, 168);
+            color: white;
+            padding: 10px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .research-day-button:hover {
+            background-color: rgb(223, 115, 76);
+        }
+        .research-day-contact {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #333;
+        }
+        .research-day-email {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        /* Video Container End */
+
+        .resource-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+        .resource-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+        .resource-title {
+            display: flex;
+            align-items: center;
+        }.resource-card {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;  
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.cont {
+    display: flex;
+    align-items: center;  
+    justify-content: flex-start;
+}
+
+.text-and-button {
+    margin-left: 35px; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+}
+
+.resource-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px; 
+    text-align: left;  
+}
+
+.resource-btn {
+    border-radius: 30px;
+    padding: 10px 20px;
+}
+
+</style>
+
+<body>
+        <!-- Top Bar -->
+<div class="container-fluid text-white py-3 top-bar">
+    <div class="row align-items-center">
+        <div class="col-4 text-start social-icons">
+            <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-google"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="col-4 text-center logo">
+            <i class="fas fa-tooth"></i>
+            <span>32 Smile</span>
+            <div class="slogan">Bringing Perfect Smiles to Life</div>
+        </div>
+        <div class="col-4 text-end contact">
+            <span>(123) 456-7890</span>
+        </div>
+    </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-dark navbar-light">
+    <div class="container">
+        <!-- Navbar Toggler (for mobile) -->
+        <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav text-center">
+                <li class="nav-item"><a class="nav-link" href="Index.html">Home</a></li>
+  
+                <!-- Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Professional Education
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="courses.html">Courses</a></li>
+                        <li><a class="dropdown-item" href="faculty.html">Faculty</a></li>
+                        <li><a class="dropdown-item" href="casestudy.html">Case Studies</a></li>
+                        <li><a class="dropdown-item" href="helpdoc.html">Help Documents</a></li>
+                        <li><a class="dropdown-item" href="student.html">Student Resources</a></li>
+                    </ul>
+                </li>
+  
+                <li class="nav-item"><a class="nav-link" href="patient.html">Patient Education</a></li>
+                <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+                <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="Site.html">Site Map</a></li>
+                <li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 style="font-size: 60px;"><b>Research</b></h1>
+    </div>
+</section>
+<!-- hero section End -->
+
+      </header>
+    
+    <section class="research-section">
+        <h2>Research & Latest Findings</h2>
+    
+        <!-- Research Navigation Tabs -->
+        <div class="research-tabs">
+            <button class="tab-btn active" data-tab="articles">Latest Research</button>
+            <button class="tab-btn" data-tab="media">Media Library</button>
+            <button class="tab-btn" data-tab="cases">Case Studies</button>
+        </div>
+    
+        <!-- Research Articles Section -->
+
+        <!-- Research Paragraph -->
+        <div class="research-content active" id="articles">
+          <div class="container custom-container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2 class="section-title">Leading the Future of Dental <br> Care and Innovation</h2>
+                </div>
+                <div class="col-md-8">
+                    <div class="content">
+                        <p>
+                            At <strong>32 Smile</strong>, we are dedicated to pioneering advancements in dental research and practice.  
+                            Our <strong>foundational scientific research</strong> explores breakthroughs in oral health, regenerative dentistry, and innovative treatment methodologies.  
+                            Through <strong>clinical research</strong>, we focus on cutting-edge solutions, including <em>dental implants</em>, <em>periodontitis treatments</em>, and <em>pain management therapies</em>.  
+                            Additionally, our <strong>population health and health services research</strong> integrates <em>AI-driven diagnostics</em>, <em>oral epidemiology</em>, and <em>global health initiatives</em>  
+                            to bridge disparities in dental care. Our commitment is to provide <strong>world-class expertise</strong> and <strong>groundbreaking discoveries</strong>  
+                            to ensure healthier smiles for all.  
+                        </p>
+                        <a href="#" class="btn btn-custom" style="float: left;">Explore our labs →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <!-- Research Paragraph End -->
+
+    <!-- Research Areas -->
+    <div class="container research-container">
+      <!-- Header Section with Flexbox -->
+      <div class="d-flex align-items-center research-header mb-4">
+          <h2 class="research-heading">Our Research Areas</h2>
+         
+      </div><br><br>
+      
+      <!-- Research Cards -->
+      <div class="row">
+          <div class="col-md-4">
+              <div class="research-card">
+                  <img src="img/research1.jpg" alt="Basic and Translational Research">
+                  <div class="research-card-body">
+                      <h4 class="research-card-title">Basic and Translational Research</h3> <br><br><br>
+                  </div>
+                  <div class="research-card-footer">
+                      <a href="#" class="research-button">→</a>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="research-card">
+                  <img src="img/research2.jpg" alt="Clinical Research">
+                  <div class="research-card-body">
+                      <h4 class="research-card-title">Clinical Research</h3> <br><br><br>
+                  </div>
+                  <div class="research-card-footer">
+                      <a href="#" class="research-button">→</a>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="research-card">
+                  <img src="img/research3.jpg" alt="Population Health Research">
+                  <div class="research-card-body">
+                      <h4 class="research-card-title">Population Health and Dental Services Research</h3> <br><br>
+                  </div>
+                  <div class="research-card-footer">
+                      <a href="#" class="research-button">→</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div> <br><br>
+  <!-- Research Areas End -->
+
+  <!-- Review -->
+  <div class="container stats-section">
+    <div class="row">
+        <div class="col-md-3 stats-item">
+            <h1>$8.9M+</h1>
+            <p>Federal Funding in FY24</p>
+        </div>
+        <div class="col-md-3 stats-item">
+            <h1>$898K+</h1>
+            <p>Non-federal funding in FY24</p>
+        </div>
+        <div class="col-md-3 stats-item">
+            <h1>61</h1>
+            <p>Active sponsored research projects</p>
+        </div>
+        <div class="col-md-3 stats-item">
+            <h1>10</h1>
+            <p>Number of research labs</p>
+        </div>
+    </div>
+</div><br><br>
+<!-- Review End -->
+
+<!-- Research2 Areas -->
+<div class="container research-container">
+
+  <div class="d-flex align-items-center research-header mb-4">
+      <h2 class="research-heading">Research News</h2>
+     
+  </div><br><br>
+  
+  
+  <div class="row">
+      <div class="col-md-4">
+          <div class="research-card">
+              <img src="img/research4.jpg" alt="Basic and Translational Research">
+              <div class="research-card-body" style="background-color: rgb(216, 216, 216);">
+                  <h4 class="research-card-title">Mapping dental deserts in the U.S.→</h4> <br><br><br><br>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div class="research-card">
+              <img src="img/research5.jpg" alt="Clinical Research">
+              <div class="research-card-body" style="background-color: rgb(216, 216, 216);">
+                  <h4 class="research-card-title">Dr. Lakmali Silva honored with Shore Fellowship→</h4> <br><br><br><br>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div class="research-card">
+              <img src="img/research6.jpg" alt="Population Health Research">
+              <div class="research-card-body" style="background-color: rgb(216, 216, 216);">
+                  <h4 class="research-card-title">Tackling algorithmic bias in dentistry→</h4> <br><br><br><br>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+</div> <br><br>
+<!-- Research2 Areas End -->
+
+        <!-- Media Library Section -->
+
+        <div class="research-content" id="media">
+          <div class="media-item">
+
+            <div class="container info-section">
+              <div class="row">
+                  <div class="col-md-4 info-item">
+                      <h3>Oral Health Sciences PhD and Masters Program</h3>
+                      <p>The primary objective of these programs is to train outstanding students to become leaders in academic research in oral health science.</p>
+                  </div>
+                  <div class="col-md-4 info-item">
+                      <h3>Find a Faculty Lab</h3>
+                      <p>Looking for a particular researcher or lab? Browse the extensive list of faculty labs at the School of Dentistry.</p>
+                  </div>
+                  <div class="col-md-4 info-item">
+                      <h3>Research Training</h3>
+                      <p>The School of Dentistry provides opportunities for students and volunteers to enrich their education through research.</p>
+                  </div>
+              </div>
+          </div>
+
+              <h3>Dental Surgery Techniques</h3>
+              <div class="video-container">
+              <video controls>
+                  <source src="img/Dr.Yi_.Implant.mp4" type="video/mp4">
+                  Your browser does not support videos.
+              </video>
+          </div>
+          <div class="container research-day-container">
+            <h2 class="research-day-title">RESEARCH DAY</h2><br>
+            <h3 class="research-day-date">SAVE THE DATE - February 13, 2025</h3>
+            <p class="research-day-description">An annual celebration of the cutting-edge research at the School of Dentistry, including a keynote, poster presentations, and awards.</p>
+            <a href="#" class="btn research-day-button">RESEARCH DAY WEBSITE</a>
+            <p class="research-day-contact">Any questions regarding Research Day please contact the Office of Research:</p>
+            <p class="research-day-email">Email: 32Smile@gmail.com</p>
+        </div>
+      </div>
+  </div>
+    
+        <!-- Case Studies Section -->
+        <div class="research-content" id="cases">
+            <div class="case-study">
+              <div class="container py-5">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="resource-card">
+                            <div class="cont">
+                              <img style="width: 60px; height: auto;" src="img/icon1.jpg" alt="">
+                              <div class="text-and-button">
+                                <h5 class="resource-title">Caries/Cavities</h5>
+                                <a href="pdfs/Caries_Toolkit.zip"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="resource-card">
+                              <div class="cont">
+                                  <img style="width: 60px; height: auto;" src="img/icon2.jpg" alt="">
+                                  <div class="text-and-button">
+                                      <h5 class="resource-title">Gingival Health</h5>
+                                      <a href="pdfs/Gingivitis_Toolkit.zip"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="resource-card">
+                              <div class="cont">
+                                  <img style="width: 60px; height: auto;" src="img/icon3.jpg" alt="">
+                                  <div class="text-and-button">
+                                      <h5 class="resource-title">Oral Conditions</h5>
+                                      <a href="pdfs/Philips_Kids_Toolkit.zip"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="resource-card">
+                              <div class="cont">
+                                  <img style="width: 60px; height: auto;" src="img/icon4.jpg" alt="">
+                                  <div class="text-and-button">
+                                      <h5 class="resource-title">Orthodontics</h5>
+                                      <a href="pdfs/Ortho_Toolkit.zip"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="resource-card">
+                              <div class="cont">
+                                  <img style="width: 60px; height: auto;" src="img/icon5.jpg" alt="">
+                                  <div class="text-and-button">
+                                      <h5 class="resource-title">Periodontitis</h5>
+                                      <a href="pdfs/Perio_Toolkit.zip"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="resource-card">
+                              <div class="cont">
+                                  <img style="width: 60px; height: auto;" src="img/icon6.jpg" alt="">
+                                  <div class="text-and-button">
+                                      <h5 class="resource-title">All Conditions</h5>
+                                      <a href="pdfs/Patient_Education_Toolkits.zip"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="resource-card">
+                              <div class="cont">
+                                  <img style="width: 60px; height: auto;" src="img/icon7.jpg" alt="">
+                                  <div class="text-and-button">
+                                      <h5 class="resource-title">Teeth Whitening</h5>
+                                      <a href="pdfs/Whitening_Toolkit.zip"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="resource-card">
+                              <div class="cont">
+                                  <img style="width: 60px; height: auto;" src="img/icon8.jpg" alt="">
+                                  <div class="text-and-button">
+                                      <h5 class="resource-title">Behavior Change</h5>
+                                      <a href="pdfs/behavior-change-resources.zip"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="resource-card">
+                              <div class="cont">
+                                  <img style="width: 60px; height: auto;" src="img/icon9.jpg" alt="">
+                                  <div class="text-and-button">
+                                      <h5 class="resource-title">Implant Care</h5>
+                                      <a href="pdfs/2161-1122-6-359.pdf"><button class="btn btn-primary resource-btn">See Resources</button></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+            </div>
+        </div>
+    </section> 
+    
+    <!-- Footer Section -->
+<footer class="text-white" style="background-color: rgb(67, 83, 112); padding: 40px 0; margin-top: 20px;">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-4 text-center text-md-start">
+              <h4 class="fw-bold">About 32 Smile</h4>
+              <p>We are a dedicated dental clinic in Karachi, providing high-quality services to ensure healthy and beautiful smiles for our patients.</p>
+          </div>
+          <div class="col-md-4 text-center">
+              <h4 class="fw-bold">Quick Links</h4>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">Home</a></li>
+                  <li><a href="patient.html" class="text-white text-decoration-none">Patient Education</a></li>
+                  <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
+                  <li><a href="ContactUs.html" class="text-white text-decoration-none">Contact</a></li>
+              </ul>
+          </div>
+          <div class="col-md-4 text-center text-md-end">
+              <h4 class="fw-bold">Contact Us</h4>
+              <p><i class="fas fa-map-marker-alt"></i> 75950 Federal B . #1609, Sindh, Karachi 75950</p>
+              <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+              <p><i class="fas fa-envelope"></i> 32smiles@dentist.com</p>
+              <div class="social-icons">
+                  <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="text-white me-2"><i class="fab fa-google"></i></a>
+                  <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+              </div>
+          </div>
+      </div>
+      <hr class="bg-white">
+      <div class="text-center">
+          <p class="mb-0">&copy; 2025 32 Smile. All Rights Reserved.</p>
+      </div>
+  </div>
+</footer>
+    
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Tabs Functionality
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const contentSections = document.querySelectorAll(".research-content");
+
+    tabButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            tabButtons.forEach(btn => btn.classList.remove("active"));
+            contentSections.forEach(section => section.classList.remove("active"));
+
+            this.classList.add("active");
+            const tabId = this.getAttribute("data-tab");
+            document.getElementById(tabId).classList.add("active");
+        });
+    });
+
+    // Read More Button to Open Wikipedia Link
+    const readMoreLinks = document.querySelectorAll(".read-more");
+
+    readMoreLinks.forEach(link => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+            const topic = this.getAttribute("data-title");
+            const wikiUrl = `https://en.wikipedia.org/wiki/${topic}`;
+            window.open(wikiUrl, "_blank"); // Opens in a new tab
+        });
+    });
+});
+
+
+    </script>
+
+</body>
+</html>

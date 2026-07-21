@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<style>
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Top Bar */
+.top-bar {
+  padding: 15px 40px; 
+  background: rgb(63, 87, 112); 
+  color: white;
+}
+
+.social-icons a {
+  font-size: 20px;
+  margin-right: 15px;
+  color: white;
+  transition: color 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+  color: #00bfff; 
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.slogan {
+  font-size: 16px;
+  font-style: italic;
+  color: #ddd;
+}
+
+.contact {
+  text-align: right;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Navbar */
+.navbar {
+  padding: 10px 40px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-nav {
+  margin: 0 auto;
+}
+
+.navbar-nav .nav-item {
+  padding: 0 15px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: white !important;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #00bfff;
+}
+
+.navbar-light .navbar-toggler {
+  border-color: white;
+}
+
+/* Dropdown Menu */
+.navbar .dropdown-menu {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  border: none;
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.navbar .nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.navbar .dropdown-menu .dropdown-item {
+  color: #333 !important;
+  font-weight: 500;
+  padding: 12px 20px;
+  transition: background 0.3s ease-in-out, padding 0.2s ease-in-out;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover {
+  background: rgb(235, 124, 83);
+  color: white !important;
+  padding-left: 25px;
+}
+
+/* Hero Section */
+.hero-section {
+    background: url('img/courses.jpg') no-repeat center center/cover;
+  height: 500px; /* Fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 8%;
+  position: relative;
+  color: white;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+}
+
+/* Case Studies Section */
+.case-studies {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+/* Introduction */
+.intro {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: white;
+  border-left: 5px solid #0077b6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  text-align: justify;
+}
+
+/* Case Study Layout */
+.case2, .case3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: justify;
+}
+
+.case2 img, .case3 img {
+  width: 350px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.case h2 {
+  color: #0077b6;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.case p {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+/* Footer */
+footer {
+  background-color: rgb(67, 83, 112);
+  padding: 40px 0;
+  color: white;
+  text-align: center;
+}
+
+footer ul {
+  padding: 0;
+  list-style: none;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .top-bar {
+    padding: 10px 20px;
+  }
+
+  .hero-section {
+    height: 300px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .case2, .case3 {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .case2 img, .case3 img {
+    width: 100%;
+    max-width: 350px;
+    margin: 15px 0;
+  }
+
+  .case h2 {
+    font-size: 24px;
+  }
+
+  .case p {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-bar {
+    text-align: center;
+  }
+
+  .social-icons a {
+    margin: 5px;
+  }
+
+  .contact {
+    font-size: 16px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .case-studies, .intro {
+    padding: 15px;
+  }
+
+  .case h2 {
+    font-size: 1.3em;
+  }
+
+  .case p {
+    font-size: 0.9em;
+  }
+
+  footer {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    height: 250px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .case2, .case3 {
+    padding: 10px;
+  }
+
+  .case h2 {
+    font-size: 1.2em;
+  }
+
+  .case p {
+    font-size: 0.85em;
+  }
+}
+
+
+
+</style>
+
+<body>
+
+<!-- Top Bar -->
+<div class="container-fluid text-white py-3 top-bar">
+  <div class="row align-items-center">
+      <div class="col-4 text-start social-icons">
+          <a href="https://www.facebook.com/" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.x.com/" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.google.com/" class="text-white me-3"><i class="fab fa-google"></i></a>
+          <a href="https://www.instagram.com/" class="text-white"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="col-4 text-center logo">
+          <i class="fas fa-tooth"></i>
+          <span>32 Smile</span>
+          <div class="slogan">Bringing Perfect Smiles to Life</div>
+      </div>
+      <div class="col-4 text-end contact">
+          <span>(123) 456-7890</span>
+      </div>
+  </div>
+</div>
+<!-- Topbar End -->
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-dark navbar-light">
+  <div class="container">
+      <!-- Navbar Toggler (for mobile) -->
+      <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav text-center">
+              <li class="nav-item"><a class="nav-link" href="Index.html">Home</a></li>
+
+              <!-- Dropdown Menu -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Professional Education
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="courses.html">Courses</a></li>
+                      <li><a class="dropdown-item" href="faculty.html">Faculty</a></li>
+                      <li><a class="dropdown-item" href="casestudy.html">Case Studies</a></li>
+                      <li><a class="dropdown-item" href="helpdoc.html">Help Documents</a></li>
+                      <li><a class="dropdown-item" href="student.html">Student Resources</a></li>
+                  </ul>
+              </li>
+
+              <li class="nav-item"><a class="nav-link" href="patient.html">Patient Education</a></li>
+              <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+              <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+              <li class="nav-item"><a class="nav-link" href="Site.html">Site Map</a></li>
+              <li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact</a></li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 style="font-size: 60px;"><b>Case Study</b></h1>
+    </div>
+</section>
+<!-- hero section End -->
+    
+<!-- Introduction Section -->
+<section class="intro">
+    <h2>Introduction</h2>
+    <p>Welcome to our dental case study section. Here, we present real-life cases showcasing various dental treatments and their outcomes. These cases highlight common dental problems, diagnoses, treatment plans, and results to help patients and professionals understand different dental procedures.</p>
+</section>
+
+<!-- Case Studies Section -->
+<section class="case-studies">
+
+    <!-- Case 1: Teeth Alignment (Braces Treatment) -->
+     <div class="case2">
+    <div class="case">
+        <h2>Case 1:<br> Teeth Alignment (Braces Treatment)</h2><br>
+        <p><strong>Background:</strong> Ali, a 16-year-old, was embarrassed due to misaligned teeth.</p>
+        <p><strong>Symptoms:</strong> Overlapping lower teeth, protruding upper teeth.</p>
+        <p><strong>Diagnosis:</strong> X-ray confirmed Class II malocclusion.</p>
+        <p><strong>Treatment Plan:</strong> Metal braces for 12 months, with monthly check-ups.</p>
+        <p><strong>Results:</strong> Straight teeth, improved confidence.</p>
+    </div>
+
+    <img style="height: 300px;" src="img/braces.jpg" alt="">
+</div>
+
+
+    <!-- Case 2: Teeth Whitening -->
+     <div class="case3">
+        <img style="height: 300px;" src="img/Teeth-Whitening.jpg" alt="">
+    <div class="case">
+        <h2>Case 2: <br> Teeth Whitening</h2><br>
+        <p><strong>Background:</strong> Ayesha suffered from yellowing teeth due to coffee and smoking.</p>
+        <p><strong>Symptoms:</strong> Teeth stains and dullness.</p>
+        <p><strong>Diagnosis:</strong> Surface-level stains, treatable with laser whitening.</p>
+        <p><strong>Treatment Plan:</strong> One laser whitening session, fluoride treatment.</p>
+        <p><strong>Results:</strong> Brighter teeth, enhanced smile.</p>
+    </div>
+</div>
+
+    <!-- Case 3: Tooth Implant -->
+     <div class="case2">
+    <div class="case">
+        <h2>Case 3: <br> Tooth Implant</h2><br>
+        <p><strong>Background:</strong> Salman lost his front tooth in an accident.</p>
+        <p><strong>Symptoms:</strong> Difficulty chewing, loss of confidence.</p>
+        <p><strong>Diagnosis:</strong> CBCT scan confirmed suitability for an implant.</p>
+        <p><strong>Treatment Plan:</strong> Titanium implant with a ceramic crown after 3 months.</p>
+        <p><strong>Results:</strong> Natural-looking replacement tooth.</p>
+    </div>
+    <img style="height: 300px;" src="img/toothimplant.jpg" alt="">
+</div>
+
+    <!-- Case 4: Invisalign (Invisible Braces) -->
+     <div class="case3">
+        <img style="height: 300px;" src="img/Invisalign.jpg" alt="">
+    <div class="case">
+        <h2>Case 4: <br> Invisalign (Invisible Braces)</h2><br>
+        <p><strong>Background:</strong> Sara wanted to straighten her teeth without metal braces.</p>
+        <p><strong>Symptoms:</strong> Crooked teeth, mild bite misalignment.</p>
+        <p><strong>Diagnosis:</strong> 3D scan confirmed she was suitable for Invisalign.</p>
+        <p><strong>Treatment Plan:</strong> Custom aligners changed every 2 weeks for 8 months.</p>
+        <p><strong>Results:</strong> Perfectly straight teeth without noticeable braces.</p>
+    </div>
+</div>
+
+    <!-- Case 5: Root Canal Treatment -->
+     <div class="case2">
+    <div class="case">
+        <h2>Case 5: <br> Root Canal Treatment</h2><br>
+        <p><strong>Background:</strong> Ahmed, a 40-year-old, had severe tooth pain.</p>
+        <p><strong>Symptoms:</strong> Extreme pain in a molar, sensitivity to hot and cold.</p>
+        <p><strong>Diagnosis:</strong> X-ray showed an infected pulp inside the tooth.</p>
+        <p><strong>Treatment Plan:</strong> Root canal therapy to remove infection, followed by a crown.</p>
+        <p><strong>Results:</strong> Pain relief, saved natural tooth.</p>
+    </div>
+    <img style="height: 300px;" src="img/rootcanal.jpg" alt="">
+</div>
+
+    <!-- Case 6: Gum Disease Treatment -->
+     <div class="case3">
+        <img style="height: 300px;" src="img/gum-treatment.jpg" alt="">
+    <div class="case">
+        <h2>Case 6: <br> Gum Disease Treatment</h2><br>
+        <p><strong>Background:</strong> Farhan noticed bleeding gums and bad breath.</p>
+        <p><strong>Symptoms:</strong> Swollen, bleeding gums, loose teeth.</p>
+        <p><strong>Diagnosis:</strong> Advanced gum disease (Periodontitis) due to poor oral hygiene.</p>
+        <p><strong>Treatment Plan:</strong> Deep cleaning (Scaling & Root Planing), antibiotics.</p>
+        <p><strong>Results:</strong> Healthy gums, no more bleeding, improved breath.</p>
+    </div>
+</div>
+
+</section>
+
+<!-- Footer Section -->
+<footer class="text-white" style="background-color: rgb(67, 83, 112); padding: 40px 0; margin-top: 20px;">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-4 text-center text-md-start">
+              <h4 class="fw-bold">About 32 Smile</h4>
+              <p>We are a dedicated dental clinic in Karachi, providing high-quality services to ensure healthy and beautiful smiles for our patients.</p>
+          </div>
+          <div class="col-md-4 text-center">
+              <h4 class="fw-bold">Quick Links</h4>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">Home</a></li>
+                  <li><a href="patient.html" class="text-white text-decoration-none">Patient Education</a></li>
+                  <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
+                  <li><a href="ContactUs.html" class="text-white text-decoration-none">Contact</a></li>
+              </ul>
+          </div>
+          <div class="col-md-4 text-center text-md-end">
+              <h4 class="fw-bold">Contact Us</h4>
+              <p><i class="fas fa-map-marker-alt"></i> 75950 Federal B . #1609, Sindh, Karachi 75950</p>
+              <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+              <p><i class="fas fa-envelope"></i> 32smiles@dentist.com</p>
+              <div class="social-icons">
+                  <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="text-white me-2"><i class="fab fa-google"></i></a>
+                  <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+              </div>
+          </div>
+      </div>
+      <hr class="bg-white">
+      <div class="text-center">
+          <p class="mb-0">&copy; 2025 32 Smile. All Rights Reserved.</p>
+      </div>
+  </div>
+</footer>
+
+</body>
+
+</html>

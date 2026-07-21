@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Document</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+
+<style>
+    /* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Top Bar */
+.top-bar {
+  padding: 15px 40px; 
+  background: rgb(63, 87, 112); 
+  color: white;
+}
+
+.social-icons a {
+  font-size: 20px;
+  margin-right: 15px;
+  color: white;
+  transition: color 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+  color: #00bfff; /* Highlight on hover */
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.slogan {
+  font-size: 16px;
+  font-style: italic;
+  color: #ddd;
+}
+
+.contact {
+  text-align: right;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Navbar */
+.navbar {
+  padding: 10px 40px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-nav {
+  margin: 0 auto;
+}
+
+.navbar-nav .nav-item {
+  padding: 0 15px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: white !important;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #00bfff;
+}
+
+.navbar-light .navbar-toggler {
+  border-color: white;
+}
+
+/* Dropdown Menu */
+.navbar .dropdown-menu {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  border: none;
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.navbar .nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.navbar .dropdown-menu .dropdown-item {
+  color: #333 !important;
+  font-weight: 500;
+  padding: 12px 20px;
+  transition: background 0.3s ease-in-out, padding 0.2s ease-in-out;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover {
+  background: rgb(235, 124, 83);
+  color: white !important;
+  padding-left: 25px;
+}
+
+/* Hero Section */
+.hero-section {
+  background: url('img/helpdoc.jpg') no-repeat center center/cover;
+  height: 500px; /* Fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 8%;
+  position: relative;
+  color: white;
+}
+
+/* Dark Overlay */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Hero Content */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-style: italic;
+}
+
+section {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1,
+h2,
+h3 {
+  color: #3987d4;
+}
+
+.faq-item {
+  margin-bottom: 10px;
+}
+
+.faq-question {
+  background: rgb(56, 87, 146);
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.faq-answer {
+  display: none;
+  background: #e3f2fd;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+th {
+  background: rgb(56, 91, 156);
+  color: white;
+}
+
+a {
+  color: rgb(54, 87, 148);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+</style>
+
+<body>
+    <header>
+        <!-- Top Bar -->
+<div class="container-fluid text-white py-3 top-bar">
+    <div class="row align-items-center">
+        <div class="col-4 text-start social-icons">
+            <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-google"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="col-4 text-center logo">
+            <i class="fas fa-tooth"></i>
+            <span>32 Smile</span>
+            <div class="slogan">Bringing Perfect Smiles to Life</div>
+        </div>
+        <div class="col-4 text-end contact">
+            <span>(123) 456-7890</span>
+        </div>
+    </div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-dark navbar-light">
+  <div class="container">
+      <!-- Navbar Toggler (for mobile) -->
+      <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav text-center">
+              <li class="nav-item"><a class="nav-link" href="Index.html">Home</a></li>
+
+              <!-- Dropdown Menu -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Professional Education
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="courses.html">Courses</a></li>
+                      <li><a class="dropdown-item" href="faculty.html">Faculty</a></li>
+                      <li><a class="dropdown-item" href="casestudy.html">Case Studies</a></li>
+                      <li><a class="dropdown-item" href="helpdoc.html">Help Documents</a></li>
+                      <li><a class="dropdown-item" href="student.html">Student Resources</a></li>
+                  </ul>
+              </li>
+
+              <li class="nav-item"><a class="nav-link" href="patient.html">Patient Education</a></li>
+              <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+              <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+              <li class="nav-item"><a class="nav-link" href="Site.html">Site Map</a></li>
+              <li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact</a></li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section1 class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 style="font-size: 60px; color: white;"><b>Help Documents</b></h1>
+    </div>
+</section1>
+<!-- hero section End -->
+
+        <section class="intro">
+            <h1>Welcome to the Help Documents Section!</h1>
+            <p>Here you will find useful resources, FAQs, and downloadable guides related to dental education and
+                professional courses. Whether you're a student, faculty member, or a patient looking for information,
+                this section will help you with everything you need.</p>
+        </section>
+
+        <section class="faq">
+            <h2>📌 Frequently Asked Questions</h2>
+
+            <h3>🎓 Student FAQs</h3>
+            <div class="faq-item">
+                <button class="faq-question">❓ How do I enroll in a course?</button>
+                <div class="faq-answer">✅ You can enroll in courses by visiting the Professional Education section and
+                    selecting the course you are interested in.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">❓ How can I contact my faculty members?</button>
+                <div class="faq-answer">✅ Faculty members’ details are available in the Faculty section. You can check
+                    their profiles and email them for academic queries.</div>
+            </div>
+
+            <h3>🦷 Patient FAQs</h3>
+            <div class="faq-item">
+                <button class="faq-question">❓ What is the best way to maintain oral hygiene?</button>
+                <div class="faq-answer">✅ Brush twice a day, floss regularly, and visit a dentist every 6 months for a
+                    check-up.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">❓ What should I do if I have a toothache?</button>
+                <div class="faq-answer">✅ Rinse with warm salt water, take a pain reliever, and schedule a visit with a
+                    dentist as soon as possible.</div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">❓ What foods are bad for my teeth?</button>
+                <div class="faq-answer">✅ Sugary drinks, sticky candies, and acidic foods can cause cavities and enamel
+                    erosion.</div>
+            </div>
+        </section>
+
+        <section class="downloads">
+            <h2>📌 Downloadable PDFs – Study Materials & Guides</h2>
+            <table>
+                <tr>
+                    <th>📂 Document Name</th>
+                    <th>📥 Download Link</th>
+                </tr>
+                <tr>
+                    <td>📄 Course Enrollment Guide</td>
+                    <td><a href="pdfs/2161-1122-6-359.pdf">Download PDF</a></td>
+                </tr>
+                <tr>
+                    <td>📄 Student Handbook</td>
+                    <td><a href="pdfs/American_Association_of_Oral_Maxillofacial_Surgeons._Wisdom_Teeth.pdf">Download PDF</a></td>
+                </tr>
+                <tr>
+                    <td>📄 Exam Preparation Tips</td>
+                    <td><a href="pdfs/Orthodontic_treatment.pdf">Download PDF</a></td>
+                </tr>
+                <tr>
+                    <td>📄 Dental Care Guide</td>
+                    <td><a href="pdfs/Periodontal_diseases-_A_brief_review.pdf">Download PDF</a></td>
+                </tr>
+                <tr>
+                    <td>📄 Common Dental Problems & Solutions</td>
+                    <td><a href="pdfs/root canal.pdf">Download PDF</a></td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="resources">
+            <h2>📌 External Resources</h2>
+            <ul>
+                <li>🔗 <a href="https://www.ada.org" target="_blank">American Dental Association</a> – Learn more about
+                    oral health and dentistry.</li>
+                <li>🔗 <a href="https://www.nidcr.nih.gov" target="_blank">National Institute of Dental Research</a> –
+                    Research and study materials related to dentistry.</li>
+            </ul>
+        </section>
+
+        <section class="contact" style="text-align: left;">
+            <h2>📌 Contact for Help</h2>
+            <p>💬 "If you need further assistance, feel free to reach out through our <a href="ContactUs.html">Contact
+                    Us</a> page."</p>
+        </section>
+
+        <!-- Footer Section -->
+<footer class="text-white" style="background-color: rgb(67, 83, 112); padding: 40px 0; margin-top: 20px;">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-4 text-center text-md-start">
+              <h4 class="fw-bold">About 32 Smile</h4>
+              <p>We are a dedicated dental clinic in Karachi, providing high-quality services to ensure healthy and beautiful smiles for our patients.</p>
+          </div>
+          <div class="col-md-4 text-center">
+              <h4 class="fw-bold">Quick Links</h4>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">Home</a></li>
+                  <li><a href="patient.html" class="text-white text-decoration-none">Patient Education</a></li>
+                  <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
+                  <li><a href="ContactUs.html" class="text-white text-decoration-none">Contact</a></li>
+              </ul>
+          </div>
+          <div class="col-md-4 text-center text-md-end">
+              <h4 class="fw-bold">Contact Us</h4>
+              <p><i class="fas fa-map-marker-alt"></i> 75950 Federal B . #1609, Sindh, Karachi 75950</p>
+              <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+              <p><i class="fas fa-envelope"></i> 32smiles@dentist.com</p>
+              <div class="social-icons">
+                  <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="text-white me-2"><i class="fab fa-google"></i></a>
+                  <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+              </div>
+          </div>
+      </div>
+      <hr class="bg-white">
+      <div class="text-center">
+          <p class="mb-0">&copy; 2025 32 Smile. All Rights Reserved.</p>
+      </div>
+  </div>
+</footer>
+
+        <script src="script.js"></script>
+    </body>
+    </html>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const faqButtons = document.querySelectorAll(".faq-question");
+
+            faqButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    const answer = this.nextElementSibling;
+                    if (answer.style.display === "block") {
+                        answer.style.display = "none";
+                    } else {
+                        answer.style.display = "block";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
