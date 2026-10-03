@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<style>
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Top Bar */
+.top-bar {
+  padding: 15px 40px; 
+  background: rgb(63, 87, 112); 
+  color: white;
+}
+
+.social-icons a {
+  font-size: 20px;
+  margin-right: 15px;
+  color: white;
+  transition: color 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+  color: #00bfff; 
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.slogan {
+  font-size: 16px;
+  font-style: italic;
+  color: #ddd;
+}
+
+.contact {
+  text-align: right;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Navbar */
+.navbar {
+  padding: 10px 40px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-nav {
+  margin: 0 auto;
+}
+
+.navbar-nav .nav-item {
+  padding: 0 15px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: white !important;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #00bfff;
+}
+
+.navbar-light .navbar-toggler {
+  border-color: white;
+}
+
+/* Dropdown Menu */
+.navbar .dropdown-menu {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  border: none;
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.navbar .nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.navbar .dropdown-menu .dropdown-item {
+  color: #333 !important;
+  font-weight: 500;
+  padding: 12px 20px;
+  transition: background 0.3s ease-in-out, padding 0.2s ease-in-out;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover {
+  background: rgb(235, 124, 83);
+  color: white !important;
+  padding-left: 25px;
+}
+
+/* Hero Section */
+.hero-section {
+  background: url('img/casestudy.jpg') no-repeat center center/cover;
+  height: 500px; /* Fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 8%;
+  position: relative;
+  color: white;
+}
+
+/* Dark Overlay */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Hero Content */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-style: italic;
+}
+
+        /* Courses */
+
+          .course-categories {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 10px 15px;
+            background: rgb(67, 83, 112);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .courses {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .course-card {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        
+        .enroll-btn {
+            background: rgb(67, 83, 112);
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        img:hover{
+          cursor: pointer;
+        }
+
+        /* Trusted */
+        .trusted-section {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .trusted-section h2{
+          font-weight: inherit;
+        }
+
+        .trusted-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 50px; 
+        }
+        .trusted-logos img {
+            max-width: 150px;
+            height: auto;
+        }
+        /* Trusted End */
+
+        /* Webinar */
+        .webinar-section img {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        /* Webinar End */
+
+</style>
+
+<body>
+
+<!-- Top Bar -->
+<div class="container-fluid text-white py-3 top-bar">
+    <div class="row align-items-center">
+        <div class="col-4 text-start social-icons">
+            <a href="https://www.facebook.com/" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.x.com/" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.google.com/" class="text-white me-3"><i class="fab fa-google"></i></a>
+            <a href="https://www.instagram.com/" class="text-white"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="col-4 text-center logo">
+            <i class="fas fa-tooth"></i>
+            <span>32 Smile</span>
+            <div class="slogan">Bringing Perfect Smiles to Life</div>
+        </div>
+        <div class="col-4 text-end contact">
+            <span>(123) 456-7890</span>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-dark navbar-light">
+  <div class="container">
+      <!-- Navbar Toggler (for mobile) -->
+      <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav text-center">
+              <li class="nav-item"><a class="nav-link" href="Index.html">Home</a></li>
+
+              <!-- Dropdown Menu -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Professional Education
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="courses.html">Courses</a></li>
+                      <li><a class="dropdown-item" href="faculty.html">Faculty</a></li>
+                      <li><a class="dropdown-item" href="casestudy.html">Case Studies</a></li>
+                      <li><a class="dropdown-item" href="helpdoc.html">Help Documents</a></li>
+                      <li><a class="dropdown-item" href="student.html">Student Resources</a></li>
+                  </ul>
+              </li>
+
+              <li class="nav-item"><a class="nav-link" href="patient.html">Patient Education</a></li>
+              <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+              <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+              <li class="nav-item"><a class="nav-link" href="Site.html">Site Map</a></li>
+              <li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact</a></li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 style="font-size: 60px;"><b>Courses</b></h1>
+    </div>
+</section>
+<!-- hero section End -->
+
+<!-- Trusted -->
+<section class="trusted-section container">
+  <h2>Trusted By Top Manufacturers & Leaders</h2><br><br>
+  <div class="trusted-logos">
+      <img src="img/course1.jpg" alt="CRD Clinical Research Dental">
+      <img src="img/course2.jpg" alt="Clinician's Choice">
+      <img src="img/courses3.jpg" alt="Brasseler USA">
+      <img src="img/course4.jpg" alt="Cosmedent">
+  </div>
+</section>
+<!-- Trusted End -->
+
+<!-- Webinar -->
+<section class="webinar-section container">
+  <div class="row align-items-center">
+          <img src="img/courseheader.jpg" class="img-fluid" alt="Dental Webinar">
+      </div>
+  </div>
+</section>
+<!-- Webinar End -->
+
+<!-- Courses  -->
+<section class="course-categories">
+  <h2>Available Courses</h2><br>
+
+  <input type="text" class="search" placeholder="Search for a course"
+    style="margin-bottom: 30px; width: 30%; padding: 10px;" oninput="searchCourse()">
+  <div class="no-results" style="display: none; color: blue;">No course found!</div>
+
+  <div class="categories">
+    <button class="filter-btn" data-category="all">All</button>
+    <button class="filter-btn" data-category="basic">Basic</button>
+    <button class="filter-btn" data-category="advanced">Advanced</button>
+    <button class="filter-btn" data-category="specialized">Specialized</button>
+  </div>
+</section>
+
+<section class="courses">
+  <div class="course-card" data-category="basic">
+    <img style="width: 250px; height: 160px; padding-bottom: 10px;" src="img/Course.png" alt="">
+    <h3 style="color: rgb(9, 49, 122);">Introduction to <br> Dentistry</h3>
+    <p>Learn the fundamentals of dental care and oral hygiene.</p>
+    <span>Duration: 4 Weeks</span>
+    <button class="enroll-btn">Enroll Now</button>
+  </div>
+
+  <div class="course-card" data-category="basic">
+    <img style="width: 250px; height: 160px; padding-bottom: 10px;" src="img/Course.png" alt="">
+    <h3 style="color: rgb(12, 46, 110);">Oral Health <br> Basics</h3>
+    <p>Understanding the importance of daily oral hygiene.</p>
+    <span>Duration: 3 Weeks</span>
+    <button class="enroll-btn">Enroll Now</button>
+  </div>
+
+  <div class="course-card" data-category="advanced">
+    <img style="width: 250px; height: 160px; padding-bottom: 10px;" src="img/Course.png" alt="">
+    <h3 style="color: rgb(15, 52, 119);">Advanced <br> Endodontics</h3>
+    <p>Explore root canal procedures and pain management.</p>
+    <span>Duration: 6 Weeks</span>
+    <button class="enroll-btn">Enroll Now</button>
+  </div>
+
+  <div class="course-card" data-category="advanced">
+    <img style="width: 250px; height: 160px; padding-bottom: 10px;" src="img/Course.png" alt="">
+    <h3 style="color: rgb(18, 55, 124);">Periodontal Surgery Techniques</h3>
+    <p>Deep dive into gum disease treatment procedures.</p>
+    <span>Duration: 5 Weeks</span>
+    <button class="enroll-btn">Enroll Now</button>
+  </div>
+
+  <div class="course-card" data-category="specialized">
+    <img style="width: 250px; height: 160px; padding-bottom: 10px;" src="img/Course.png" alt="">
+    <h3 style="color: rgb(18, 51, 114);">Orthodontic <br> Treatments</h3>
+    <p>Learn about braces, aligners, and teeth alignment techniques.</p>
+    <span>Duration: 8 Weeks</span>
+    <button class="enroll-btn">Enroll Now</button>
+  </div>
+
+  <div class="course-card" data-category="specialized">
+    <img style="width: 250px; height: 160px; padding-bottom: 10px;" src="img/Course.png" alt="">
+    <h3 style="color: rgb(5, 44, 116);">Dental <br> Implantology</h3>
+    <p>Comprehensive guide to dental implants and prosthetics.</p>
+    <span>Duration: 7 Weeks</span>
+    <button class="enroll-btn">Enroll Now</button>
+  </div>
+
+  <div class="course-card" data-category="specialized">
+    <img style="width: 250px; height: 160px; padding-bottom: 10px;" src="img/Course.png" alt="">
+    <h3 style="color: rgb(14, 50, 117);">Cosmetic <br> Dentistry</h3>
+    <p>Study of teeth whitening, veneers, and aesthetic procedures.</p>
+    <span>Duration: 6 Weeks</span>
+    <button class="enroll-btn">Enroll Now</button>
+  </div>
+
+  <div class="course-card" data-category="advanced">
+    <img style="width: 250px; height: 160px; padding-bottom: 10px;" src="img/Course.png" alt="">
+    <h3 style="color: rgb(8, 47, 119);">Maxillofacial <br> Surgery</h3>
+    <p>Understanding complex jaw and facial surgeries.</p>
+    <span>Duration: 10 Weeks</span>
+    <button class="enroll-btn">Enroll Now</button>
+  </div>
+
+  <div class="course-card" data-category="basic">
+    <img style="width: 250px; height: 160px; padding-bottom: 10px;" src="img/Course.png" alt="">
+    <h3 style="color: rgb(14, 54, 129);">Pediatric <br> Dentistry</h3>
+    <p>Focus on dental care for children and teenagers.</p>
+    <span>Duration: 5 Weeks</span>
+    <button class="enroll-btn">Enroll Now</button>
+  </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="text-white" style="background-color: rgb(67, 83, 112); padding: 40px 0; margin-top: 20px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center text-md-start">
+        <h4 class="fw-bold">About 32 Smile</h4>
+        <p>We are a dedicated dental clinic in Karachi, providing high-quality services to ensure healthy and
+          beautiful smiles for our patients.</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <h4 class="fw-bold">Quick Links</h4>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-white text-decoration-none">Home</a></li>
+          <li><a href="patient.html" class="text-white text-decoration-none">Patient Education</a></li>
+          <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
+          <li><a href="ContactUs.html" class="text-white text-decoration-none">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 text-center text-md-end">
+        <h4 class="fw-bold">Contact Us</h4>
+        <p><i class="fas fa-map-marker-alt"></i> 75950 Federal B . #1609, Sindh, Karachi 75950</p>
+        <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+        <p><i class="fas fa-envelope"></i> 32smiles@dentist.com</p>
+        <div class="social-icons">
+          <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-white me-2"><i class="fab fa-google"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <hr class="bg-white">
+    <div class="text-center">
+      <p class="mb-0">&copy; 2025 32 Smile. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const courses = document.querySelectorAll(".course-card");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const category = this.getAttribute("data-category");
+
+        courses.forEach((course) => {
+          if (category === "all" || course.getAttribute("data-category") === category) {
+            course.style.display = "block";
+          } else {
+            course.style.display = "none";
+          }
+        });
+      });
+    });
+  });
+  function searchCourse() {
+    let input = document.querySelector(".search").value.toLowerCase();
+    let courses = document.querySelectorAll(".course-card");
+    let noResults = document.querySelector(".no-results");
+    let found = false;
+
+    courses.forEach(course => {
+      let courseName = course.querySelector("h3").textContent.toLowerCase();
+      if (courseName.includes(input)) {
+        course.style.display = "block";
+        found = true;
+      } else {
+        course.style.display = "none";
+      }
+    });
+
+    noResults.style.display = found ? "none" : "block";
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

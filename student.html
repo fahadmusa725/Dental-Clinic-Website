@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Resources</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
+      integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      padding: 15px 40px;
+      background: rgb(63, 87, 112);
+      color: white;
+    }
+
+    .social-icons a {
+      font-size: 20px;
+      margin-right: 15px;
+      color: white;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .social-icons a:hover {
+      color: #00bfff; /* Highlight on hover */
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .slogan {
+      font-size: 16px;
+      font-style: italic;
+      color: #ddd;
+    }
+
+    .contact {
+      text-align: right;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* Navbar */
+    .navbar {
+      padding: 10px 40px;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .navbar-nav {
+      margin: 0 auto;
+    }
+
+    .navbar-nav .nav-item {
+      padding: 0 15px;
+    }
+
+    .navbar-light .navbar-nav .nav-link {
+      color: white !important;
+      font-weight: bold;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .navbar-light .navbar-nav .nav-link:hover {
+      color: #00bfff;
+    }
+
+    .navbar-light .navbar-toggler {
+      border-color: white;
+    }
+
+    /* Dropdown Menu */
+    .navbar .dropdown-menu {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      border: none;
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+    .navbar .nav-item.dropdown:hover .dropdown-menu {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .navbar .dropdown-menu .dropdown-item {
+      color: #333 !important;
+      font-weight: 500;
+      padding: 12px 20px;
+      transition: background 0.3s ease-in-out, padding 0.2s ease-in-out;
+    }
+
+    .navbar .dropdown-menu .dropdown-item:hover {
+      background: rgb(235, 124, 83);
+      color: white !important;
+      padding-left: 25px;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: url("img/student.png") no-repeat center center/cover;
+      height: 500px; /* Fixed height */
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 8%;
+      position: relative;
+      color: white;
+    }
+
+    /* Dark Overlay */
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Hero Content */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-style: italic;
+    }
+
+    section {
+      max-width: 800px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #333;
+      padding-bottom: 5px;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+    iframe {
+      width: 100%;
+    }
+    .faq p strong {
+      cursor: pointer;
+      color: #007bff;
+      display: block;
+      margin: 10px 0;
+    }
+
+    .faq .answer {
+      display: none;
+      color: #333;
+    }
+
+    .card {
+            border: 2px solid black;
+            margin-top: 15px;
+            padding: 10px;
+        }
+
+    .container img{
+      height: 255px;
+      width: auto;
+    }
+
+  </style>
+
+  <body>
+    <!-- Top Bar -->
+    <div class="container-fluid text-white py-3 top-bar">
+      <div class="row align-items-center">
+        <div class="col-4 text-start social-icons">
+          <a href="#" class="text-white me-3"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-google"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="col-4 text-center logo">
+          <i class="fas fa-tooth"></i>
+          <span>32 Smile</span>
+          <div class="slogan">Bringing Perfect Smiles to Life</div>
+        </div>
+        <div class="col-4 text-end contact">
+          <span>(123) 456-7890</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light">
+      <div class="container">
+          <!-- Navbar Toggler (for mobile) -->
+          <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+    
+          <!-- Navbar Links -->
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+              <ul class="navbar-nav text-center">
+                  <li class="nav-item"><a class="nav-link" href="Index.html">Home</a></li>
+    
+                  <!-- Dropdown Menu -->
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Professional Education
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="courses.html">Courses</a></li>
+                          <li><a class="dropdown-item" href="faculty.html">Faculty</a></li>
+                          <li><a class="dropdown-item" href="casestudy.html">Case Studies</a></li>
+                          <li><a class="dropdown-item" href="helpdoc.html">Help Documents</a></li>
+                          <li><a class="dropdown-item" href="student.html">Student Resources</a></li>
+                      </ul>
+                  </li>
+    
+                  <li class="nav-item"><a class="nav-link" href="patient.html">Patient Education</a></li>
+                  <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+                  <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+                  <li class="nav-item"><a class="nav-link" href="Site.html">Site Map</a></li>
+                  <li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact</a></li>
+              </ul>
+          </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section1 class="hero-section">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 style="font-size: 60px"><b>Student Resources</b></h1>
+      </div>
+    </section1>
+    <!-- hero section End -->
+
+    <!-- Fundraiser -->
+    <div class="container py-5">
+      <div class="row mb-4">
+          <div class="col-md-2 d-flex align-items-center">
+              <img style="height: auto;" src="img/fundraiser.jpg" alt="Fundraiser" class="img-fluid rounded">
+          </div>
+          <div class="col-md-10 d-flex flex-column justify-content-center">
+              <h2 class="fw-bold" style="color: rgb(48, 88, 161);"><b>Interested in special fundraising programs to support your school organization?<b></h2>
+              <button style="border-radius: 40px; background-color: rgb(182, 79, 41); color: white;" class="btn px-5">ACT TODAY!</button>
+          </div>
+      </div>
+      <hr>
+      <div class="row mt-4">
+          <div class="col-md-2 d-flex align-items-center">
+              <img style="height: auto;" src="img/chairside.jpg" alt="Dental Mirror" class="img-fluid rounded">
+          </div>
+          <div class="col-md-10">
+              <h2 class="fw-bold" style="color: rgb(48, 86, 156);">PERIODONTAL CHAIRSIDE GUIDE</h2>
+              <p>
+                  This chairside periodontal patient education guide is designed to help you communicate 
+                  common oral conditions to your patients while using your professional guidance to provide 
+                  treatment options.
+              </p>
+              <p>
+                  This Patient Consultation Guide is based on the Classification of Periodontal and Peri-Implant 
+                  Diseases and Conditions proceedings of the World Workshop jointly held by AAP and EFP 2017.
+              </p>
+              <button style="border-radius: 40px; background-color: rgb(182, 79, 41); color: white;" class="btn px-5">Download PDF</button>
+          </div>
+      </div>
+  </div>
+  <!-- Fundraise End -->
+
+  <!-- Resources -->
+  <div class="container py-5" style="max-width: 60%;">
+    <h1 class="text-center fw-bold mb-4" style="color: rgb(55,97,173);">Resources</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="img/caring.jpg" class="card-img-top rounded" alt="Periodontal Exam">
+                <div class="card-body">
+                    <h5 class="fw-bold">Periodontal Exam: Interactive Module</h5>
+                    <p>The learner will experience a virtual soft tissue exam including the parameters of the 2018 AAP periodontal classification guidelines, five patient case studies to develop critical thinking and problem-solving skills, and a final knowledge quiz.</p>
+                    <button style="border-radius: 20px; background-color: rgb(55, 97, 173); color: white;" class="btn">Play Module</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="product/Thoothpaste2.jpg" class="card-img-top rounded" alt="Toothpaste">
+                <div class="card-body">
+                    <h5 class="fw-bold">Toothpaste: Interactive Module</h5>
+                    <p>What’s in it for you and your patients? This interactive module will go into depth about the benefits of stabilized stannous fluoride and how to communicate benefits to your patients. benefits of stabilized stannous fluoride.</p><br><br>
+                    <button style="border-radius: 20px; background-color: rgb(55, 97, 173); color: white;" class="btn">Play Module</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <img src="product/Toothbrush3.jpg" class="card-img-top rounded" alt="Electric Toothbrush">
+                <div class="card-body">
+                    <h5 class="fw-bold">Electric Toothbrush: Interactive Module</h5>
+                    <p>Patient compliance is key to improved self-care and oral health. In this interactive module, learn how to make an impactful and evidence-based recommendation using motivational interviewing techniques proven to improve oral.</p> <br>
+                    <button style="border-radius: 20px; background-color: rgb(55, 97, 173); color: white;" class="btn px-3">Play Module</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+              <img src="img/rootcanal.jpg" class="card-img-top rounded" alt="Periodontal Exam">
+              <div class="card-body">
+                  <h5 class="fw-bold">Periodontal Exam: Interactive Module</h5>
+                  <p>The learner will experience a virtual soft tissue exam including the parameters of the 2018 AAP periodontal classification guidelines, five patient case studies to develop critical thinking and problem-solving skills, and a final knowledge quiz.</p>
+                  <button style="border-radius: 20px; background-color: rgb(55, 97, 173); color: white;" class="btn">Play Module</button>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+            <img src="img/Invisalign.jpg" class="card-img-top rounded" alt="Periodontal Exam">
+            <div class="card-body">
+                <h5 class="fw-bold">Periodontal Exam: Interactive Module</h5>
+                <p>The learner will experience a virtual soft tissue exam including the parameters of the 2018 AAP periodontal classification guidelines, five patient case studies to develop critical thinking and problem-solving skills, and a final knowledge quiz.</p>
+                <button style="border-radius: 20px; background-color: rgb(55, 97, 173); color: white;" class="btn">Play Module</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+          <img src="img/Smile.jpg" class="card-img-top rounded" alt="Periodontal Exam">
+          <div class="card-body">
+              <h5 class="fw-bold">Periodontal Exam: Interactive Module</h5>
+              <p>The learner will experience a virtual soft tissue exam including the parameters of the 2018 AAP periodontal classification guidelines, five patient case studies to develop critical thinking and problem-solving skills, and a final knowledge quiz.</p>
+              <button style="border-radius: 20px; background-color: rgb(55, 97, 173); color: white;" class="btn">Play Module</button>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+<!-- Resource End -->
+
+    <section class="video-tutorials">
+      <h2>Video Tutorials</h2>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/vjhHnTCSy0U?si=CBf_-1WMAEhB_fSA"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe><br><br>
+
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/8gVfdyASewA?si=hWmy2pPSc2PGnsYh"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe><br><br>
+
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/90Ee1W3FVG8?si=Ofsbi-lNZ8F7V9Tz"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </section>
+
+    <!-- Fundraise -->
+    <div class="container py-5" style="max-width: 70%;">
+      <div class="row mb-4">
+          <div class="col-md-2 d-flex align-items-center">
+              <img style="height: auto;" src="img/Radiology.jpg" alt="Fundraiser" class="img-fluid rounded">
+          </div>
+          <div class="col-md-10 d-flex flex-column justify-content-center">
+              <h2 class="fw-bold" style="color: rgb(48, 88, 161);"><b>Dental Radiology Syllabus<b></h2>
+                <p>The information in this 12-module syllabus is intended (1) to meet elements of initial educational/training requirements for Dental Assistant Students related to dental radiography; (2) to provide a framework for an in-service training program in oral healthcare settings to meet annual educational/training requirements as mandated by federal, state, local and professional organizations; and (3) to serve as a resource for oral healthcare personnel wishing to review evidence-based information on specific topics related to dental radiography.</p>
+              <button style="border-radius: 40px; background-color: rgb(182, 79, 41); color: white;" class="btn px-5">ACT TODAY!</button>
+          </div>
+      </div>
+      <hr>
+      <div class="row mt-4">
+          <div class="col-md-2 d-flex align-items-center">
+              <img style="height: auto;" src="img/syllabus.jpg" alt="Dental Mirror" class="img-fluid rounded">
+          </div>
+          <div class="col-md-10">
+              <h2 class="fw-bold" style="color: rgb(48, 86, 156);">Infection Control Syllabus</h2>
+              <p>
+                  This chairside periodontal patient education guide is designed to help you communicate 
+                  common oral conditions to your patients while using your professional guidance to provide 
+                  treatment options.
+              </p>
+              <p>
+                  This Patient Consultation Guide is based on the Classification of Periodontal and Peri-Implant 
+                  Diseases and Conditions proceedings of the World Workshop jointly held by AAP and EFP 2017.
+              </p>
+              <button style="border-radius: 40px; background-color: rgb(182, 79, 41); color: white;" class="btn px-5">Download PDF</button>
+          </div>
+      </div>
+  </div>
+  <!-- Fundraise End -->
+
+    <section class="faq">
+      <h2>Frequently Asked Questions</h2>
+      <p><strong>What is dental hygiene?</strong></p>
+      <p class="answer">
+        Dental hygiene refers to the practice of keeping your mouth clean and
+        free of disease by regular brushing, flossing, and professional
+        cleanings.
+      </p>
+
+      <p><strong>How often should I visit the dentist?</strong></p>
+      <p class="answer">
+        It is recommended to visit the dentist at least twice a year for routine
+        checkups and cleanings.
+      </p>
+
+      <p><strong>What are the best practices for oral care?</strong></p>
+      <p class="answer">
+        Brushing twice a day, flossing daily, using mouthwash, and maintaining a
+        healthy diet are key practices for good oral care.
+      </p>
+    </section>
+
+    <!-- Footer Section -->
+<footer class="text-white" style="background-color: rgb(67, 83, 112); padding: 40px 0; margin-top: 20px;">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-4 text-center text-md-start">
+              <h4 class="fw-bold">About 32 Smile</h4>
+              <p>We are a dedicated dental clinic in Karachi, providing high-quality services to ensure healthy and beautiful smiles for our patients.</p>
+          </div>
+          <div class="col-md-4 text-center">
+              <h4 class="fw-bold">Quick Links</h4>
+              <ul class="list-unstyled">
+                  <li><a href="#" class="text-white text-decoration-none">Home</a></li>
+                  <li><a href="patient.html" class="text-white text-decoration-none">Patient Education</a></li>
+                  <li><a href="research.html" class="text-white text-decoration-none">Research</a></li>
+                  <li><a href="ContactUs.html" class="text-white text-decoration-none">Contact</a></li>
+              </ul>
+          </div>
+          <div class="col-md-4 text-center text-md-end">
+              <h4 class="fw-bold">Contact Us</h4>
+              <p><i class="fas fa-map-marker-alt"></i> 75950 Federal B . #1609, Sindh, Karachi 75950</p>
+              <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+              <p><i class="fas fa-envelope"></i> 32smiles@dentist.com</p>
+              <div class="social-icons">
+                  <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="text-white me-2"><i class="fab fa-google"></i></a>
+                  <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+              </div>
+          </div>
+      </div>
+      <hr class="bg-white">
+      <div class="text-center">
+          <p class="mb-0">&copy; 2025 32 Smile. All Rights Reserved.</p>
+      </div>
+  </div>
+</footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const faqQuestions = document.querySelectorAll(".faq p strong");
+
+        faqQuestions.forEach((question) => {
+          question.addEventListener("click", function () {
+            let parent = this.parentElement;
+            let answer = parent.nextElementSibling;
+            if (answer && answer.classList.contains("answer")) {
+              answer.style.display =
+                answer.style.display === "none" || answer.style.display === ""
+                  ? "block"
+                  : "none";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

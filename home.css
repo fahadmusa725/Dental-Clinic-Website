@@ -1,0 +1,466 @@
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Top Bar Animation */
+/* Top Bar */
+.top-bar {
+  padding: 15px 40px; 
+  background: rgb(63, 87, 112); 
+  color: white;
+}
+
+.social-icons a {
+  font-size: 20px;
+  margin-right: 15px;
+  color: white;
+  transition: color 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+  color: #00bfff; 
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.slogan {
+  font-size: 16px;
+  font-style: italic;
+  color: #ddd;
+}
+
+.contact {
+  text-align: right;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Navbar */
+.navbar {
+  background-color: black !important;
+  font-size: 17px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  animation: slideInNavbar 0.5s ease-in-out;
+}
+
+/* Navbar Collapse */
+.navbar-collapse {
+  display: flex;
+  justify-content: center; 
+  width: 100%;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: center;  
+  width: 100%;
+  padding-left: 0; 
+  margin-bottom: 0;
+}
+
+/* Navbar Item */
+.navbar-nav .nav-item {
+  padding: 0 15px; 
+}
+
+/* Navbar Link */
+.navbar-nav .nav-link {
+  color: white !important;
+  font-weight: bold;
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+  border-color: white;
+}
+
+/* Dropdown Menu */
+.navbar .dropdown-menu {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  border: none;
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.navbar .nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.navbar .dropdown-menu .dropdown-item {
+  color: #333 !important;
+  font-weight: 500;
+  padding: 12px 20px;
+  transition: background 0.3s ease-in-out, padding 0.2s ease-in-out;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover {
+  background: rgb(235, 124, 83);
+  color: white !important;
+  padding-left: 25px;
+}
+
+/* Responsive Navbar for Mobile */
+@media (max-width: 992px) {
+  .navbar-nav {
+    display: block;
+    text-align: center;
+  }
+
+  .navbar-toggler {
+    margin-left: auto; /* Center the navbar-toggler button */
+  }
+}
+
+/* Hero Section */
+.hero-section {
+  background: url('img/main.png') no-repeat center center/cover;
+  height: 80vh; 
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 0%;
+  position: relative;
+  text-align: center;
+  color: white;
+  animation: fadeInUp 1s ease-in-out; 
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: auto;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  font-style: oblique;
+  animation: fadeInHeroText 1s ease-in-out;
+}
+
+@keyframes fadeInHeroText {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Hero Section */
+@media (max-width: 768px) {
+  .hero-section {
+    height: 60vh;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Appointment Button Animation */
+.btn-appointment {
+  background: #007bff;
+  color: white;
+  font-weight: bold;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.btn-appointment:hover {
+  background: white;
+  color: #007bff;
+  border: 2px solid #007bff;
+  transform: scale(1.08);
+}
+
+.container {
+  padding-left: 20px; 
+}
+
+.container,
+.container-fluid {
+    padding-left: 30px !important;
+    margin-left: 0 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .top-bar {
+    text-align: center;
+  }
+
+  .social-icons,
+  .contact {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .hero-section {
+    height: 70vh;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .hero-content {
+    padding: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Cards Animation */
+.custom-section {
+  background-color: #ffffff;
+  padding: 0px 0;
+}
+
+.custom-heading {
+  font-weight: bold;
+  color: #2b2d42;
+}
+
+.custom-highlight {
+  font-weight: bold;
+  color: #1d3557;
+}
+
+.btn-orange {
+  background-color: rgb(230, 119, 78);
+  color: white;
+  border: none;
+  margin: 10px;
+  padding: 15px;
+}
+
+.btn-orange:hover {
+  background-color: #bb5e07;
+}
+
+.btn-blue {
+  background-color: #2b2d42;
+  color: white;
+  padding: 15px;
+  border: none;
+  margin: 10px;
+}
+
+.btn-blue:hover {
+  background-color: #444879;
+}
+
+/* Service Box Animation */
+.service-box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  animation: fadeInServiceBox 1s forwards;
+}
+
+@keyframes fadeInServiceBox {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.service-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.service-img:hover {
+  transform: scale(1.1);
+}
+
+.service-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(67, 83, 112);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.service-title:hover {
+  background-color: #6d72a5;
+  cursor: pointer;
+}
+
+.content-section {
+  min-height: 400px;
+}
+
+.container4 {
+  margin-left: 100px;
+  margin-right: 100px;
+  animation: fadeInContainer 1s ease-in-out;
+}
+
+/* Responsive Service Boxes */
+@media (max-width: 768px) {
+  .service-box {
+    max-width: 100%;
+  }
+}
+
+
+@keyframes fadeInTopBar {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Make sure all other fadeIn keyframes are relatively quick */
+@keyframes fadeInHeroText {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInServiceBox {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Optional: Use smooth easing for transitions */
+* {
+  transition: all 0.3s ease-in-out;
+}
+
+/* testimonial */
+
+.container5{
+  background: url("img/review.jpg") no-repeat center center fixed;
+  background-size: cover;
+  padding: 60px;
+}
+
+.review-box {
+  background: rgba(0, 123, 255, 0.7);
+  padding: 30px;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+}
+.review-box img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Responsive Testimonials */
+@media (max-width: 768px) {
+  .review-box {
+    max-width: 90%;
+  }
+}
+
+/* Footer */
+.footer {
+  background-color: rgb(67, 83, 112);
+  color: white;
+  padding: 40px 0;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footer .social-icons a {
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 20px;
+    text-align: center;
+  }
+}
