@@ -18,7 +18,7 @@ A professional dental clinic website developed as a team project.
 
 ## Live Website
 
-https://dental-eproject.netlify.app/
+[https://dental-clinic-website-jade-kappa.vercel.app](https://dental-clinic-website-jade-kappa.vercel.app)
 
 ## Technologies
 
