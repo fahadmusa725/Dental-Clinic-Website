@@ -199,3 +199,31 @@
 .btn:hover{
   background-color: rgb(35, 69, 133);
 }
+
+@media (max-width: 767.98px) {
+  .top-bar {
+    padding: 10px 15px;
+  }
+  .top-bar .row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .top-bar .col-4 {
+    width: 100%;
+    text-align: center;
+  }
+  .top-bar .social-icons {
+    order: 2;
+    margin-bottom: 6px;
+  }
+  .top-bar .logo {
+    order: 1;
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+  .top-bar .contact {
+    order: 3;
+    text-align: center;
+  }
+}
